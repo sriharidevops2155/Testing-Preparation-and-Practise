@@ -21,7 +21,9 @@ const config = ({
   reporter: 'html',
   use: {
       browserName: 'chromium',
-      headless : true  // npx playwright test --headed
+      // browserName: 'firefox',
+      // browserName: 'webkit',
+      headless : true  // headless:true will disbale live browser , headless:flase -->  npx playwright test --headed - It will show browsers 
   },
 });
 module.exports = config
