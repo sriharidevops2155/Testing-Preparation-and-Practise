@@ -32,12 +32,24 @@ test('Dropdown test case', async ({page})=>
     await expect(documentlink).toHaveAttribute("Class","blinkingText");
 })
 
-test('Child window or new window test', async ({page})=> {
+test('Child window or new window test', async ({browser})=> {
+    const context = browser.newContext();
+    const page = await context.newPage();
     await page.goto("https://rahulshettyacademy.com/client/#/auth/login");
     const userName = page.locator("#username");
-    const password = page.locator("[type='Password']");
-    const signin = locator("#signINBtn");
-    const dropdown = page.locator("select.form-control");
     const documentlink = page.locator("[href*='documents-request]");
+
+    const [newPage] = Promise.all(  // We should store the return value in array as it may open the multiple pages - [newPage]
+
+    [context.waitForEvent('page'), // It will listen if any new page opens
+    documentlink.click(),])// new page will open here 
     
+    const text = await newPage.locator(".red").textContent();
+    const array = text.split("@");
+    const domain = arrayText[1].split("")[0]
+    console.log(domain);
+    await page.userName().type(domain);
+    page.pause();
+    //console.log(await page.userName().textContent()); --> textContent() Output will be nothing as the text we enetered is dynamic and not present in DOM i.e DOM has already opened and hence then no value in hmtl
+    console.log(await page.userName().inputValue());  // inputValue() is to get only the dynamic data that we enetered in text box
 })
