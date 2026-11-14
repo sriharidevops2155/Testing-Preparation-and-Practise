@@ -5,7 +5,7 @@ test('Browser context Playwright Test', async ({page})=>   // async function() ,
     const productName = "Zara Coat 4"
     const products = page.locator(".cart-body");
     await page.goto("https://rahulshettyacademy.com/client/#/auth/login");
-    await page.getByPlaceholder("email@example.com").fill("sriharibandi");
+    await page.getByPlaceholder("email@example.com").fill("sriharixyz");
     await page.getByPlaceholder("enter your passsword").fill("xyspassword");
     await page.getByRole('button', {name :"login"}).click();
     await page.waitForLoadState('networkidle');
